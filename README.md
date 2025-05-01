@@ -1,7 +1,7 @@
 # **Comparative analysis of odorant receptor (OR) gene expansion in eusocial versus non-eusocial Hymenopteran and non-Hymenopteran insects**
 ## *Savanna Brown, Weijun Liang, Tyler Elias*<br><br>
 
-# **Introduction**
+### **Introduction**
 
 In animals, eusociality is a complex and extreme social structure defined by having three characteristics: reproductive division of labor (castes), cooperative care of young, and overlapping generations (Wilson and Hölldobler, 2005). In these societies, some individuals forgo personal reproduction to help rear the offspring of genetic relatives, a scenario often explained by inclusive fitness or kin selection theory (Eberhard, 1975). Inclusive fitness posits that genes promoting behavior that increases the number of offspring of close genetic kins can spread (Eberhard, 1975). Kin selection, a kind of selection that favors a trait due to its positive effects on the reproductive success of kins, is therefore regarded as a primary mechanism enabling the evolution of eusociality (Eberhard, 1975).
 
@@ -127,7 +127,9 @@ diamond makedb --in polistes_OR_protein_sequences.fasta \
                --threads 16
 ```
 <br>
+
 ### Similarity search - screen for OR genes
+
 ```bash
 module load diamond/2.1.8
 
@@ -247,8 +249,9 @@ diamond blastp \
     --outfmt 6 qseqid sseqid pident length evalue bitscore qseq sseq \
     --threads 8
 ```
-<br><br>
+<br>
 
+### Setting alignment quality thresholds
 Alignment results were filtered based on alignment quality thresholds of e-value less than 1e-10 and an alignment percent identity greater than or equal to 30%. These thresholds were chosen after exploring results and finding an ideal balance of data preservation while eliminating noise from lower quality hits that made 1:1 orthogroup:OR gene family calls unclear.
  
 ```bash
@@ -264,8 +267,8 @@ awk '$3 >= 30 && $5 < 1e-10' /home/FCAM/eeb5300/usr3/GROUP_PROJECT/DIAMOND_OGs/O
 awk -F'\t' '{split($2, a, "_"); print $1 "\t" a[2]}' /home/FCAM/eeb5300/usr3/GROUP_PROJECT/DIAMOND_OGs/OG_hits_filtered.tsv > /home/FCAM/eeb5300/usr3/GROUP_PROJECT/DIAMOND_OGs/OG_hits_filtered_summary.tsv
 ```
 
-<br><br>
-### Making Gene Family Calls
+<br>
+### Gene Family Calls
 
 Even with the alignment thresholds applied, some orthogroups matched to multiple OR gene families, complicating the ability to assign a clean 1:1 match between orthogroup and gene family.
 
