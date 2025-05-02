@@ -268,7 +268,8 @@ awk -F'\t' '{split($2, a, "_"); print $1 "\t" a[2]}' /home/FCAM/eeb5300/usr3/GRO
 ```
 
 <br>
-### Gene Family Calls
+
+### **Gene Family Calls**
 
 Even with the alignment thresholds applied, some orthogroups matched to multiple OR gene families, complicating the ability to assign a clean 1:1 match between orthogroup and gene family.
 
@@ -350,3 +351,195 @@ $1 in families {  # For matching orthogroups, add the family name as the second 
   > /home/FCAM/eeb5300/usr3/GROUP_PROJECT/DIAMOND_OGs/Orthogroups.GeneCount_with_family.tsv
 ```
 <br><br>
+
+
+## **Figure 1: Gene Family Dot Plot with Phylogeny**
+<br>
+
+**R code to generate dot plot:**
+
+```r
+# DOT PLOT R CODE
+library(ggplot2)
+library(ape)
+library(tidyverse)
+
+# Load and reshape data
+OR_family_counts <- read.csv("Family_GeneCount_Summary.csv", header = TRUE, row.names = "Family")
+OR_family_counts2 <- OR_family_counts %>% rownames_to_column(var = "GeneFamily")
+OR_family_counts_long <- OR_family_counts2 %>% pivot_longer(cols = -GeneFamily, names_to = "Species", values_to = "GeneCount")
+
+# Clean up and reorder
+species_order <- c("Ischnura elegans", "Cryptotermes secundus", "Coptotermes formosanus", "Zootermopsis nevadensis",
+                   "Periplaneta americana", "Diploptera punctata", "Harpegnathos saltator", "Apis melifera",
+                   "Vespa crabro", "Nasonia vitripennis", "Microplitis demolitor", "Orussus abietinus")
+OR_family_counts_long$Species <- gsub("\\.", " ", OR_family_counts_long$Species)
+OR_family_counts_long$Species <- factor(OR_family_counts_long$Species, levels = species_order)
+
+# Assign groups
+OR_family_counts_long <- OR_family_counts_long %>%
+  mutate(Group = case_when(
+    Species == "Ischnura elegans" ~ "Outgroup (Odonata)",
+    Species %in% c("Apis melifera", "Harpegnathos saltator", "Vespa crabro") ~ "Eusocial Hymenoptera",
+    Species %in% c("Nasonia vitripennis", "Microplitis demolitor", "Orussus abietinus") ~ "Non-eusocial Hymenoptera",
+    Species %in% c("Zootermopsis nevadensis", "Cryptotermes secundus", "Coptotermes formosanus") ~ "Eusocial Blattodea",
+    Species %in% c("Periplaneta americana", "Diploptera punctata") ~ "Non-eusocial Blattodea"
+  ))
+
+# Plot
+ggplot(OR_family_counts_long, aes(x = GeneFamily, y = Species, size = GeneCount, color = Group)) +
+  geom_point() +
+  scale_size_continuous(range = c(1, 10)) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
+        axis.text.y = element_text(face = "italic", size = 12)) +
+  xlab("Gene family") + ylab("") +
+  labs(size = "Gene count")
+```
+<br>
+
+This figure shows gene family sizes across species, grouped by sociality and order. The 9-exon family (leftmost column) is clearly expanded in eusocial Hymenoptera but not in Blattodea. Each point's size reflects gene count. The cladogram was manually constructed and is inferred based on previous phylogenetic findings (Bourguignon et al., 2014; Cheng et al., 2016; Djernaes et al., Peter et al., 2017; 2012; Shu et al., 2023; Tihelka et al., 2021).
+
+![Combined Phylogeny Dot Plot](figures/Combined_phylogeny_dot_plot.png)
+
+
+
+---
+
+## **Figure 2: Heatmap of OR Gene Families**
+<br>
+
+**R code to generate heatmap:**
+```r
+
+library(dplyr)
+library(pheatmap)
+library(RColorBrewer)
+
+final_df <- read.delim("final_df.tsv", header = TRUE)
+
+# Convert to matrix
+gene_mat <- final_df %>%
+  column_to_rownames("Family") %>%
+  as.matrix()
+
+# Define custom order
+custom_row_order <- c("9-exon", sort(setdiff(rownames(gene_mat), c("9-exon", "Unclassified"))), "Unclassified")
+custom_col_order <- c(
+  "Ischnura_elegans",
+  "Apis_melifera", "Harpegnathos_saltator", "Vespa_crabro",
+  "Nasonia_vitripennis", "Microplitis_demolitor", "Orussus_abietinus",
+  "Zootermopsis_nevadensis", "Cryptotermes_secundus", "Coptotermes_formosanus",
+  "Periplaneta_americana", "Diploptera_punctata"
+)
+
+# Reorder and log-transform
+gene_mat_ordered <- gene_mat[custom_row_order, custom_col_order]
+log_gene_mat <- log(gene_mat_ordered + 1)
+
+# Plot heatmap
+pheatmap(log_gene_mat,
+         scale = "none",
+         cluster_cols = FALSE,
+         cluster_rows = FALSE,
+         color = colorRampPalette(brewer.pal(9, "Reds"))(100),
+         display_numbers = FALSE,
+         show_rownames = TRUE,
+         show_colnames = TRUE,
+         fontsize_col = 9,
+         fontsize_row = 8,
+         main = "Log-Transformed OR Gene Family Abundance per Species\n(Values shown are ln(x + 1))",
+         labels_row = rownames(log_gene_mat),
+         angle_col = 45)
+```
+
+<br>
+
+This heatmap displays log-transformed copy numbers of odorant receptor genes across species and families. Eusocial Hymenoptera show expansion in multiple gene families, especially the 9-exon family (top row). In contrast, Blattodea species have fewer ORs overall, with no clear sociality-associated expansion.
+
+![Heatmap](figures/heatmap_R.png)
+
+
+
+---
+
+## **Figure 3: Total OR Gene Counts by Group**
+
+<br>
+
+**R code to generate box plot:**
+```r
+library(ggplot2)
+
+# Build species group annotation
+col_group <- tibble(
+  Species = custom_col_order,
+  Group = c(
+    "Outgroup",                        # Ischnura_elegans
+    "Eusocial Hymenoptera",           # Apis_melifera
+    "Eusocial Hymenoptera",           # Harpegnathos_saltator
+    "Eusocial Hymenoptera",           # Vespa_crabro
+    "Non-eusocial Hymenoptera",       # Nasonia_vitripennis
+    "Non-eusocial Hymenoptera",       # Microplitis_demolitor
+    "Non-eusocial Hymenoptera",       # Orussus_abietinus
+    "Eusocial Blattodea",             # Zootermopsis_nevadensis
+    "Eusocial Blattodea",             # Cryptotermes_secundus
+    "Eusocial Blattodea",             # Coptotermes_formosanus
+    "Non-eusocial Blattodea",         # Periplaneta_americana
+    "Non-eusocial Blattodea"          # Diploptera_punctata
+  )
+)
+
+# Sum total ORs per species
+total_ors <- colSums(gene_mat)
+
+# Merge totals with group annotation
+col_group <- col_group %>%
+  mutate(Total_ORs = total_ors[Species])
+
+# Define group order and filter
+group_order <- c(
+  "Eusocial Hymenoptera",
+  "Non-eusocial Hymenoptera",
+  "Eusocial Blattodea",
+  "Non-eusocial Blattodea"
+)
+
+col_group_filtered <- col_group %>%
+  filter(Group %in% group_order) %>%
+  mutate(Group = factor(Group, levels = group_order))
+
+# Plot
+ggplot(col_group_filtered, aes(x = Group, y = Total_ORs, fill = Group)) +
+  geom_boxplot(alpha = 0.6, outlier.shape = NA) +
+  geom_jitter(width = 0.1, size = 2) +
+  geom_text(aes(label = Total_ORs),
+            position = position_jitter(width = 0.1, height = 35),
+            vjust = -0.5, size = 3) +
+  scale_fill_manual(values = c(
+    "Eusocial Hymenoptera" = "#5E3C99",
+    "Non-eusocial Hymenoptera" = "#B2ABD2",
+    "Eusocial Blattodea" = "#1B7837",
+    "Non-eusocial Blattodea" = "#A6DBA0"
+  )) +
+  labs(
+    title = "Odorant Receptor (OR) Gene Counts by Insect Group",
+    x = "Insect Group",
+    y = "Number of OR Genes"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", size = 14, hjust = 0.5),
+    axis.title.x = element_text(face = "bold"),
+    axis.title.y = element_text(face = "bold"),
+    axis.text.x = element_text(angle = 30, hjust = 1),
+    legend.position = "none"
+  )
+```
+<br>
+
+This boxplot compares total odorant receptor (OR) gene counts across eusocial and non-eusocial insects in Hymenoptera and Blattodea. Eusocial Hymenoptera show a clear expansion in total OR genes compared to their non-eusocial relatives. In contrast, there is no consistent difference in OR counts between eusocial and non-eusocial Blattodea.
+
+![Boxplot Totals](figures/boxplot_totals_R.png)
+
+
