@@ -1,4 +1,4 @@
-## **Comparative analysis of odorant receptor (OR) gene expansion in eusocial versus non-eusocial Hymenopteran and non-Hymenopteran insects**
+## **Comparative analysis of odorant receptor (OR) genes in eusocial and non-eusocial Hymenoptera and Blattodea**
 #### *Savanna Brown, Weijun Liang, Tyler Elias*<br><br>
 
 ### **Introduction**
