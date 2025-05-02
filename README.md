@@ -1,5 +1,5 @@
-# **Comparative analysis of odorant receptor (OR) gene expansion in eusocial versus non-eusocial Hymenopteran and non-Hymenopteran insects**
-## *Savanna Brown, Weijun Liang, Tyler Elias*<br><br>
+## **Comparative analysis of odorant receptor (OR) gene expansion in eusocial versus non-eusocial Hymenopteran and non-Hymenopteran insects**
+#### *Savanna Brown, Weijun Liang, Tyler Elias*<br><br>
 
 ### **Introduction**
 
@@ -13,7 +13,7 @@ Building on this idea, genomic studies found that some eusocial insects possess 
 
 However, recent broad comparisons challenge the simple link between eusociality and OR gene count. Gautam et al. (2024) found no evidence to support that OR repertoires in Hymenoptera are linked to the evolution of eusociality. Instead, being wingless might shape the expansion of OR genes. Thus, the relationship between OR gene family size and eusocial lifestyle remains an open question. Furthermore, few studies have tackled the OR gene count in eusocial Blattodea, and it is unclear whether eusociality in this order is also associated with relatively large OR gene repertoires.<br><br>
 
-# Research Question, Hypothesis, and Objective
+## Research Question, Hypothesis, and Objective
 
 **Research question: Is there a correlation between the number of odorant receptor (OR) genes and eusociality in Hymenoptera and Blattodea?**
 
@@ -21,7 +21,7 @@ To answer our research question, we compare OR gene counts across Hymenoptera an
 
 We hypothesize that eusocial taxa will exhibit larger OR repertoires across 19 OR subfamilies than non-eusocial taxa. <br><br>
 
-## Study System
+### Study System
 To explore the relationship between odorant receptor (OR) gene repertoires and eusociality, we selected representative species from four focal categories:
 - **Eusocial Hymenoptera**
 - **Non-eusocial Hymenoptera**
@@ -43,22 +43,17 @@ An outgroup species from Odonata was also included for comparative purposes. Spe
 All eusocial species have clear reproductive and non-reproductive caste systems, whereas their listed non-social relatives lack such division of labor. By surveying OR gene family sizes in each of these taxa, **we aim to determine whether a consistent expansion of OR genes accompanies the evolution of eusociality in both orders.** <br><br>
 
 
-# **Motivation**
+## **Motivation**
 
 We started this project because we are interested in insects and gene family evolution. While exploring project ideas, we found several studies on the expansion of odorant receptors in eusocial insects. Eusociality is a fascinating topic because it is a unique way of living that influences the evolution of eusocial species.
 
 Eusocial insects are found in two major groups: Hymenoptera (which includes all ants, some bees, and some wasps) and Blattodea (which includes mostly termites, while non-eusocial species are mostly cockroaches). Previous research suggests a link between eusociality and the expansion of odorant receptors, but most studies focus on Hymenoptera. There has been less research on eusociality in Blattodea. To expand on existing studies, we took a different comparative approach by including a non-Hymenopteran lineage. We specifically focused on the 9-exon family, a well-documented group of odorant receptor genes in Hymenoptera.
+<br><br>
 
 
-<br><br><br><br><br><br><br><br>
-#INSERT REFERENCES HERE# 
-<br><br><br><br><br><br>
+## Workflow <br>
 
-
-
-# Workflow <br>
-
-## **Data Collection**
+### **Data Collection**
 
 We searched NCBI for each target species to ensure that a predicted proteome in FASTA format was available for download. Each protein fasta was downloaded directly from NCBI  using a wget command and the FTP links. <br>
 
@@ -69,7 +64,7 @@ wget –c https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/964/059/185/GCA_964059185
 ```
 <br><br>
 
-## **Quality Control**
+### **Quality Control**
 
 To assess completeness of selected proteomes, we ran **BUSCO** (Benchmarking Universal Single-Copy Orthologs) on each protein FASTA file using the `insecta_odb10` database.
 
@@ -112,12 +107,12 @@ done
 
 
 <br><br>
-### OR Gene Screening
+#### OR Gene Screening
 
 We also used **DIAMOND** (v2.1.8; Buchfink et al., 2021) to perform sequence similarity searches of OR genes in our selected proteomes. A DIAMOND database was built from a curated set of *Polistes* odorant receptor (OR) proteins from Zhou et al. (2015). Each target species’ protein FASTA file was aligned against this database using the `blastp` mode with default parameters to identify putative OR genes. <br><br>
 
 
-### Diamond databasing of curated Polistes OR protein set
+#### Diamond databasing of curated Polistes OR protein set
 
 ```bash
 module load diamond/2.1.8
@@ -128,7 +123,7 @@ diamond makedb --in polistes_OR_protein_sequences.fasta \
 ```
 <br>
 
-### Similarity search - screen for OR genes
+#### Similarity search - screen for OR genes
 
 ```bash
 module load diamond/2.1.8
@@ -163,7 +158,7 @@ All selected proteomes showed successful OR gene retrieval with this method, ind
 <br><br>
 
 
-## **OrthoFinder**
+### **OrthoFinder**
 
 OrthoFinder is a comparative genomics tool that identifies orthogroups by combining sequence similarity searches, gene tree inference, and species tree construction (Emms & Kelly, 2017). It begins with an all-vs-all sequence search across protein FASTA files from all species, clusters homologous genes into orthogroups, and then reconstructs gene trees for each orthogroup. It also infers a rooted species tree and maps gene duplication events onto the tree by comparing the topology of gene trees and the species tree, ultimately giving key information about how genes are related both among and within species.
 
@@ -193,12 +188,12 @@ python $ORTHOFINDER -f $ORTHO_INPUT/ \
 
 
 
-## Diamond Similarity Search
+### Diamond Similarity Search
 
 These orthogroups served as the basis for identifying candidate odorant receptor (OR) gene families. To identify putative OR gene families, we used our DIAMOND database of curated *Polistes* OR proteins to perform a similarity search against the longest representative protein sequence of each orthogroup.
 <br>
 
-### Longest Representative Protein Pull
+#### Longest Representative Protein Pull
 
 ```bash
 OUTPUT_FILE="/home/FCAM/eeb5300/usr3/GROUP_PROJECT/DIAMOND_OGs/longest_per_orthogroup.fasta"
@@ -233,7 +228,7 @@ done
 <br>
 
 
-### Diamond blastp
+#### Diamond blastp
 
 ```bash
 module load diamond/2.1.8 
@@ -251,7 +246,7 @@ diamond blastp \
 ```
 <br>
 
-### Setting alignment quality thresholds
+#### Setting alignment quality thresholds
 Alignment results were filtered based on alignment quality thresholds of e-value less than 1e-10 and an alignment percent identity greater than or equal to 30%. These thresholds were chosen after exploring results and finding an ideal balance of data preservation while eliminating noise from lower quality hits that made 1:1 orthogroup:OR gene family calls unclear.
  
 ```bash
@@ -269,7 +264,7 @@ awk -F'\t' '{split($2, a, "_"); print $1 "\t" a[2]}' /home/FCAM/eeb5300/usr3/GRO
 
 <br>
 
-### **Gene Family Calls**
+#### **Gene Family Calls**
 
 Even with the alignment thresholds applied, some orthogroups matched to multiple OR gene families, complicating the ability to assign a clean 1:1 match between orthogroup and gene family.
 
@@ -315,7 +310,7 @@ awk -F'\t' '{
 
 <br><br>
 
-## **Subsetting into final DF**
+#### **Subsetting into final DF**
 
 Finally, these orthogroup to OR gene family identities were merged with orthogroup gene copy number data from Orthofinder to create a final data frame with gene copy number for each OR gene family for each species.
 <br>
@@ -353,7 +348,7 @@ $1 in families {  # For matching orthogroups, add the family name as the second 
 <br><br>
 
 
-## **Figure 1: Gene Family Dot Plot with Phylogeny**
+### **Figure 1: Gene Family Dot Plot with Phylogeny**
 <br>
 
 **R code to generate dot plot:**
@@ -406,7 +401,7 @@ This figure shows gene family sizes across species, grouped by sociality and ord
 
 ---
 
-## **Figure 2: Heatmap of OR Gene Families**
+### **Figure 2: Heatmap of OR Gene Families**
 <br>
 
 **R code to generate heatmap:**
@@ -463,7 +458,7 @@ This heatmap displays log-transformed copy numbers of odorant receptor genes acr
 
 ---
 
-## **Figure 3: Total OR Gene Counts by Group**
+### **Figure 3: Total OR Gene Counts by Group**
 
 <br>
 
@@ -541,5 +536,116 @@ ggplot(col_group_filtered, aes(x = Group, y = Total_ORs, fill = Group)) +
 This boxplot compares total odorant receptor (OR) gene counts across eusocial and non-eusocial insects in Hymenoptera and Blattodea. Eusocial Hymenoptera show a clear expansion in total OR genes compared to their non-eusocial relatives. In contrast, there is no consistent difference in OR counts between eusocial and non-eusocial Blattodea.
 
 ![Boxplot Totals](figures/boxplot_totals_R.png)
+
+<br><br>
+
+## **Conclusions**
+
+
+- Odorant receptor (OR) gene families show marked expansion in Hymenoptera, particularly among eusocial species. This supports previous work linking chemical communication with social complexity.
+- In contrast, eusocial Blattodea (termites) do not exhibit similar OR gene expansions, suggesting that eusociality in this lineage may rely on other mechanisms.
+- The 9-exon and L subfamilies are especially expanded in eusocial Hymenoptera, reinforcing their proposed roles in pheromone detection and social communication.
+- *Harpegnathos saltator* (jumping ant) shows the highest total OR gene counts among sampled species, including notable expansions in the T and V subfamilies, which could reflect species-specific adaptations in chemosensation.
+
+
+
+
+### **Challenges and potential pitfalls**
+#### Data Availability
+Eusociality is rare outside Hymenoptera, and eusocial non-Hymenopteran lineages are underrepresented in genomic datasets. This limits both the number of usable species per category and the taxonomic breadth of our comparative analyses.
+
+
+#### Accurately Identifying OR Genes:
+Homologous genes can exhibit extreme sequence and amino acid divergence due to deep evolutionary timescales. Here, we rely on OrthoFinder to accurately group genes into orthogroups despite this divergence, assuming that the gene trees that are created accurately reflect true evolutionary relationships. This assumption is unlikely true all the time, however, and it is possible that not all OR genes are captured in these orthogroups. 
+Additionally, OR genes were identified by similarity search to a curated OR protein set from the Hymenopteran genus Polistes, which may bias detection toward Hymenoptera and overlook lineage-specific receptors in groups like Blattodea. A general lack of functional and genomic characterization of non-Hymenopteran OR genes is a barrier here, limiting the robustness of OR gene identification across all lineages.
+
+
+<br><br>
+## **Works Cited**
+​Bell, W. J., Roth, L. M., & Nalepa, C. A. (2007). Cockroaches: ecology, behavior, and natural history. JHU Press.
+
+
+Bourguignon, T., Lo, N., Cameron, S. L., Šobotník, J., Hayashi, Y., Shigenobu, S., ... & Evans, T. A. (2014). The evolutionary history of termites as inferred from 66 mitochondrial genomes. Molecular Biology and Evolution, 32(2), 406–421.
+
+
+Buchfink, B., Reuter, K., & Drost, H. G. (2021). Sensitive protein alignments at tree-of-life scale using DIAMOND. Nature Methods, 18, 366–368.
+
+
+Cheng, X. F., Zhang, L. P., Yu, D. N., Storey, K. B., & Zhang, J. Y. (2016). The complete mitochondrial genomes of four cockroaches (Insecta: Blattodea) and phylogenetic analyses within cockroaches. Gene, 586(1), 115–122.
+
+
+Crowley, L. M., University of Oxford, Wellcome Genome Lab, Tree of Life, & Darwin Tree of Life Consortium. (2022). The genome sequence of the European hornet, Vespa crabro Linnaeus, 1758. Wellcome Open Research, 7, 27.
+
+
+Cryptotermes secundus. Assembly: GCA_002891405.2 (GenBank). National Center for Biotechnology Information (NCBI), accessed April 2025. Available at: https://www.ncbi.nlm.nih.gov/assembly/GCA_002891405.2
+
+
+Dalla Benetta, E., Antoshechkin, I., Yang, T., Nguyen, H. Q. M., Ferree, P. M., & Akbari, O. S. (2020). Genome elimination mediated by gene expression from a selfish chromosome. Science Advances, 6(14), eaaz9808.
+
+
+Djernaes, M., Klass, K. D., Picker, M. D., & Damgaard, J. (2012). Phylogeny of cockroaches (Insecta, Dictyoptera, Blattodea), with placement of aberrant taxa and exploration of out‐group sampling. Systematic Entomology, 37(1), 65–83.
+
+
+Dockman, R. L., Simmonds, T. J., Vogel, K. J., Geib, S. M., & Ottesen, E. A. (2025). Genome Report: Improved chromosome-level genome assembly of the American cockroach, Periplaneta americana. bioRxiv, 2025–03.
+
+
+Eberhard, M. J. W. (1975). The evolution of social behavior by kin selection. The Quarterly Review of Biology, 50(1), 1–33.
+
+
+Emms, D. M., & Kelly, S. (2019). OrthoFinder: phylogenetic orthology inference for comparative genomics. Genome Biology, 20, 238.
+
+
+Fouks, B., Harrison, M. C., Mikhailova, A. A., Marchal, E., English, S., Carruthers, M., ... & Tobe, S. S. (2023). Live-bearing cockroach genome reveals convergent evolutionary mechanisms linked to viviparity in insects and beyond. iScience, 26(10).
+
+
+Gautam, S., McKenzie, S., Katzke, J., Hita Garcia, F., Yamamoto, S., & Economo, E. P. (2024). Evolution of odorant receptor repertoires across Hymenoptera is not linked to the evolution of eusociality. Proceedings of the Royal Society B, 291(2031), 20241280.
+
+
+Itakura, S., Yoshikawa, Y., Togami, Y., & Umezawa, K. (2020). Draft genome sequence of the termite, Coptotermes formosanus: Genetic insights into the pyruvate dehydrogenase complex of the termite. Journal of Asia-Pacific Entomology, 23(3), 666–674.
+
+
+Manni, M., Berkeley, M. R., Seppey, M., & Zdobnov, E. M. (2021). BUSCO: Assessing genomic data quality and beyond. Current Protocols, 1, e323.
+
+
+Microplitis demolitor. Assembly: GCF_026212275.2 (RefSeq). National Center for Biotechnology Information (NCBI), accessed April 2025. Available at: https://www.ncbi.nlm.nih.gov/assembly/GCF_026212275.2
+
+
+Orussus abietinus. Assembly: GCF_000612105.2 (RefSeq). National Center for Biotechnology Information (NCBI), accessed April 2025. Available at: https://www.ncbi.nlm.nih.gov/assembly/GCF_000612105.2
+
+
+Peters, R. S., Krogmann, L., Mayer, C., Donath, A., Gunkel, S., Meusemann, K., ... & Niehuis, O. (2017). Evolutionary history of the Hymenoptera. Current Biology, 27(7), 1013–1018.
+
+
+Plants & Python Consortium. (2022). Plants & Python: A series of lessons in coding, plant biology, computation, and bioinformatics. The Plant Cell, 34(7), e1.
+
+
+Price, B. W., Winter, M., Brooks, S. J., Natural History Museum Genome Lab, Wellcome Sanger Institute Tree of Life, & Darwin Tree of Life Consortium. (2022). The genome sequence of the blue-tailed damselfly, Ischnura elegans (Vander Linden, 1820). Wellcome Open Research, 7, 66.
+
+
+Ross, K. G., & Matthews, R. W. (Eds.). (2018). The social biology of wasps. Cornell University Press.
+
+
+Shields, E. J., Sheng, L., Weiner, A. K., Garcia, B. A., & Bonasio, R. (2018). High-quality genome assemblies reveal long non-coding RNAs expressed in ant brains. Cell Reports, 23(10), 3078–3090.
+
+
+Steinbrecht, R. A. (2007). Structure and function of insect olfactory sensilla. In Ciba Foundation Symposium 200 – Olfaction in Mosquito‐Host Interactions (pp. 158–183). Chichester, UK: John Wiley & Sons, Ltd.
+
+
+Terrapon, N., Li, C., Robertson, H. M., Ji, L., Meng, X., Booth, W., ... & Liebig, J. (2014). Molecular traces of alternative social organization in a termite genome. Nature Communications, 5(1), 3636.
+
+
+Tihelka, E., Cai, C., Giacomelli, M., Lozano-Fernandez, J., Rota-Stabelli, O., Huang, D., ... & Pisani, D. (2021). The evolution of insect biodiversity. Current Biology, 31(19), R1299–R1311.
+
+
+Wallberg, A., Bunikis, I., Pettersson, O. V., Mosbech, M. B., Childers, A. K., Evans, J. D., ... & Webster, M. T. (2019). A hybrid de novo genome assembly of the honeybee, Apis mellifera, with chromosome-length scaffolds. BMC Genomics, 20, 1–19.
+
+
+Wilson, E. O., & Hölldobler, B. (2005). Eusociality: origin and consequences. Proceedings of the National Academy of Sciences, 102(38), 13367–13371.
+
+
+Zhou, X., Rokas, A., Berger, S. L., Liebig, J., Ray, A., & Zwiebel, L. J. (2015). Chemoreceptor evolution in Hymenoptera and its implications for the evolution of eusociality. Geno
+
+
+
 
 
