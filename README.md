@@ -62,7 +62,7 @@ We searched NCBI for each target species to ensure that a predicted proteome in 
 # wget download
 wget –c https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/964/059/185/GCA_964059185.1_ibEctPall1.hap1.1/GCA_964059185.1_ibEctPall1.hap1.1_genomic.fna.gz
 ```
-<br><br>
+<br>
 
 ### **Quality Control**
 
@@ -152,7 +152,7 @@ for QUERY in $INPUT_DIR/*.faa; do
     echo "DIAMOND BLASTP completed for $QUERY. Output saved to $OUT."
 done
 ```
-<br><br>
+<br>
 
 All selected proteomes showed successful OR gene retrieval with this method, indicating that our chosen input data is sufficient for downstream analysis. 
 <br><br>
@@ -162,7 +162,7 @@ All selected proteomes showed successful OR gene retrieval with this method, ind
 
 OrthoFinder is a comparative genomics tool that identifies orthogroups by combining sequence similarity searches, gene tree inference, and species tree construction (Emms & Kelly, 2017). It begins with an all-vs-all sequence search across protein FASTA files from all species, clusters homologous genes into orthogroups, and then reconstructs gene trees for each orthogroup. It also infers a rooted species tree and maps gene duplication events onto the tree by comparing the topology of gene trees and the species tree, ultimately giving key information about how genes are related both among and within species.
 
-For this project, we ran OrthoFinder (v2.5.4) using predicted protein sequences from our selected hymenopteran and non-hymenopteran species to define orthogroups across lineages. <br>
+For this project, we ran OrthoFinder (v2.5.4) using predicted protein sequences from our selected hymenopteran and non-hymenopteran species to define orthogroups across lineages. 
 
 
 ```bash
@@ -391,13 +391,13 @@ ggplot(OR_family_counts_long, aes(x = GeneFamily, y = Species, size = GeneCount,
   xlab("Gene family") + ylab("") +
   labs(size = "Gene count")
 ```
-<br>
+<br><br>
 
 This figure shows gene family sizes across species, grouped by sociality and order. The 9-exon family (leftmost column) is clearly expanded in eusocial Hymenoptera but not in Blattodea. Each point's size reflects gene count. The cladogram was manually constructed and is inferred based on previous phylogenetic findings (Bourguignon et al., 2014; Cheng et al., 2016; Djernaes et al., Peter et al., 2017; 2012; Shu et al., 2023; Tihelka et al., 2021).
 
 ![Combined Phylogeny Dot Plot](figures/Combined_phylogeny_dot_plot.png)
 
-
+<br>
 
 ---
 
@@ -448,14 +448,14 @@ pheatmap(log_gene_mat,
          angle_col = 45)
 ```
 
-<br>
+<br><br>
 
 This heatmap displays log-transformed copy numbers of odorant receptor genes across species and families. Eusocial Hymenoptera show expansion in multiple gene families, especially the 9-exon family (top row). In contrast, Blattodea species have fewer ORs overall, with no clear sociality-associated expansion.
 
 ![Heatmap](figures/heatmap_R.png)
 
 
-
+<br>
 ---
 
 ### **Figure 3: Total OR Gene Counts by Group**
@@ -531,7 +531,7 @@ ggplot(col_group_filtered, aes(x = Group, y = Total_ORs, fill = Group)) +
     legend.position = "none"
   )
 ```
-<br>
+<br><br>
 
 This boxplot compares total odorant receptor (OR) gene counts across eusocial and non-eusocial insects in Hymenoptera and Blattodea. Eusocial Hymenoptera show a clear expansion in total OR genes compared to their non-eusocial relatives. In contrast, there is no consistent difference in OR counts between eusocial and non-eusocial Blattodea.
 
@@ -548,9 +548,10 @@ This boxplot compares total odorant receptor (OR) gene counts across eusocial an
 - *Harpegnathos saltator* (jumping ant) shows the highest total OR gene counts among sampled species, including notable expansions in the T and V subfamilies, which could reflect species-specific adaptations in chemosensation.
 
 
-
+<br>
 
 ### **Challenges and potential pitfalls**
+
 #### Data Availability
 Eusociality is rare outside Hymenoptera, and eusocial non-Hymenopteran lineages are underrepresented in genomic datasets. This limits both the number of usable species per category and the taxonomic breadth of our comparative analyses.
 
