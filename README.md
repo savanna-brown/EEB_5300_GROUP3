@@ -42,14 +42,7 @@ An outgroup species from Odonata was also included for comparative purposes. Spe
 
 All eusocial species have clear reproductive and non-reproductive caste systems, whereas their listed non-social relatives lack such division of labor. By surveying OR gene family sizes in each of these taxa, **we aim to determine whether a consistent expansion of OR genes accompanies the evolution of eusociality in both orders.** <br><br>
 
-
-## **Motivation**
-
-We started this project because we are interested in insects and gene family evolution. While exploring project ideas, we found several studies on the expansion of odorant receptors in eusocial insects. Eusociality is a fascinating topic because it is a unique way of living that influences the evolution of eusocial species.
-
-Eusocial insects are found in two major groups: Hymenoptera (which includes all ants, some bees, and some wasps) and Blattodea (which includes mostly termites, while non-eusocial species are mostly cockroaches). Previous research suggests a link between eusociality and the expansion of odorant receptors, but most studies focus on Hymenoptera. There has been less research on eusociality in Blattodea. To expand on existing studies, we took a different comparative approach by including a non-Hymenopteran lineage. We specifically focused on the 9-exon family, a well-documented group of odorant receptor genes in Hymenoptera.
 <br><br>
-
 
 ## Workflow <br>
 
