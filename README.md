@@ -349,7 +349,6 @@ $1 in families {  # For matching orthogroups, add the family name as the second 
 ```r
 # DOT PLOT R CODE
 library(ggplot2)
-library(ape)
 library(tidyverse)
 
 # Load and reshape data
