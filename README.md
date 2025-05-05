@@ -53,7 +53,7 @@ We searched NCBI for each target species to ensure that a predicted proteome in 
 
 ```bash
 # wget download for the outgroup protein dataset; the same method is used for downloading all the other samples
-wget –c https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/921/293/095/GCF_921293095.1_ioIscEleg1.1/GCF_921293095.1_ioIscEleg1.1_protein.faa.gz
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/921/293/095/GCF_921293095.1_ioIscEleg1.1/GCF_921293095.1_ioIscEleg1.1_protein.faa.gz
 ```
 <br>
 
