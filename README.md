@@ -102,7 +102,7 @@ done
 <br><br>
 #### OR Gene Screening
 
-We also used **DIAMOND** (v2.1.8; Buchfink et al., 2021) to perform sequence similarity searches of OR genes in our selected proteomes. A DIAMOND database was built from a curated set of *Polistes* odorant receptor (OR) proteins from Zhou et al. (2015). Each target species’ protein FASTA file was aligned against this database using the `blastp` mode with default parameters to identify putative OR genes. <br><br>
+We also used **DIAMOND** (v2.1.8; Buchfink et al., 2021) to perform sequence similarity searches of OR genes in our selected proteomes. A DIAMOND database was built from a curated set of *Polistes* odorant receptor (OR) proteins from Legan et al. (2021). Each target species’ protein FASTA file was aligned against this database using the `blastp` mode with default parameters to identify putative OR genes. <br><br>
 
 
 #### Diamond databasing of curated Polistes OR protein set
@@ -595,6 +595,9 @@ Gautam, S., McKenzie, S., Katzke, J., Hita Garcia, F., Yamamoto, S., & Economo, 
 
 
 Itakura, S., Yoshikawa, Y., Togami, Y., & Umezawa, K. (2020). Draft genome sequence of the termite, Coptotermes formosanus: Genetic insights into the pyruvate dehydrogenase complex of the termite. Journal of Asia-Pacific Entomology, 23(3), 666–674.
+
+
+Legan, A. W., Jernigan, C. M., Miller, S. E., Fuchs, M. F., & Sheehan, M. J. (2021). Expansion and accelerated evolution of 9-exon odorant receptors in Polistes paper wasps. Molecular biology and evolution, 38(9), 3832-3846.
 
 
 Manni, M., Berkeley, M. R., Seppey, M., & Zdobnov, E. M. (2021). BUSCO: Assessing genomic data quality and beyond. Current Protocols, 1, e323.
