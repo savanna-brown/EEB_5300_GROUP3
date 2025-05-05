@@ -636,7 +636,7 @@ Wallberg, A., Bunikis, I., Pettersson, O. V., Mosbech, M. B., Childers, A. K., E
 Wilson, E. O., & Hölldobler, B. (2005). Eusociality: origin and consequences. Proceedings of the National Academy of Sciences, 102(38), 13367–13371.
 
 
-Zhou, X., Rokas, A., Berger, S. L., Liebig, J., Ray, A., & Zwiebel, L. J. (2015). Chemoreceptor evolution in Hymenoptera and its implications for the evolution of eusociality. Geno
+Zhou, X., Rokas, A., Berger, S. L., Liebig, J., Ray, A., & Zwiebel, L. J. (2015). Chemoreceptor evolution in Hymenoptera and its implications for the evolution of eusociality. Genome biology and evolution, 7(8), 2407-2416.
 
 
 
