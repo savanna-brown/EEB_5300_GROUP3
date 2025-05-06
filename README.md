@@ -336,7 +336,7 @@ $1 in families {  # For matching orthogroups, add the family name as the second 
    print $1 "\t" families[$1] "\t" substr($0, index($0, "\t") + 1);
 }' /home/FCAM/eeb5300/usr3/GROUP_PROJECT/DIAMOND_OGs/OG_hits_classified.tsv \
   /home/FCAM/eeb5300/usr3/GROUP_PROJECT/DIAMOND_OGs/Orthogroups.GeneCount_subset.tsv \
-  > /home/FCAM/eeb5300/usr3/GROUP_PROJECT/DIAMOND_OGs/Orthogroups.GeneCount_with_family.tsv
+  > /home/FCAM/eeb5300/usr3/GROUP_PROJECT/DIAMOND_OGs/Family_GeneCount_Summary.csv
 ```
 <br><br>
 
@@ -403,7 +403,7 @@ library(dplyr)
 library(pheatmap)
 library(RColorBrewer)
 
-final_df <- read.delim("final_df.tsv", header = TRUE)
+final_df <- read.csv("Family_GeneCount_Summary.csv", header = TRUE)
 
 # Convert to matrix
 gene_mat <- final_df %>%
