@@ -1,7 +1,7 @@
-## **Comparative analysis of odorant receptor (OR) genes in eusocial and non-eusocial Hymenoptera and Blattodea**
+# **Comparative analysis of odorant receptor (OR) genes in eusocial and non-eusocial Hymenoptera and Blattodea**
 #### *Savanna Brown, Weijun Liang, Tyler Elias*<br><br>
 
-### **Introduction**
+## **Introduction**
 
 In animals, eusociality is a complex and extreme social structure defined by having three characteristics: reproductive division of labor (castes), cooperative care of young, and overlapping generations (Wilson and Hölldobler, 2005). In these societies, some individuals forgo personal reproduction to help rear the offspring of genetic relatives, a scenario often explained by inclusive fitness or kin selection theory (Eberhard, 1975). Inclusive fitness theory holds that genes driving behaviors which enhance the reproductive success of close relatives can proliferate (Eberhard, 1975). Kin selection, a kind of selection that favors a trait due to its positive effects on the reproductive success of kins, is therefore regarded as a primary mechanism enabling the evolution of eusociality (Eberhard, 1975).
 
@@ -13,7 +13,7 @@ Building on this idea, genomic studies found that some eusocial insects possess 
 
 However, recent broad comparisons challenge the simple link between eusociality and OR gene count. Gautam et al. (2024) found no evidence to support that OR repertoires in Hymenoptera are linked to the evolution of eusociality. Instead, being wingless might shape the expansion of OR genes. Thus, the relationship between OR gene family size and eusocial lifestyle remains an open question. Furthermore, few studies have tackled the OR gene count in eusocial Blattodea, and it is unclear whether eusociality in this order is also associated with relatively large OR gene repertoires.<br><br>
 
-## Research Question, Hypothesis, and Objective
+### Research Question, Hypothesis, and Objective
 
 **Research question: Is there a correlation between the number of odorant receptor (OR) genes and eusociality in Hymenoptera and Blattodea?**
 
