@@ -36,7 +36,7 @@ An outgroup species from Odonata was also included for comparative purposes. Spe
 | Non-eusocial Hymenoptera  | *Nasonia vitripennis* (jewel wasp)<br>*Microplitis demolitor* (braconid parasitoid wasp)<br>*Orussus abietinus* (parasitic wood wasp) |
 | Eusocial Blattodea        | *Zootermopsis nevadensis* (dampwood termite)<br>*Cryptotermes secundus* (drywood termite)<br>*Coptotermes formosanus* (Formosan subterranean termite) |
 | Non-eusocial Blattodea    | *Periplaneta americana* (American cockroach)<br>*Diploptera punctata* (Pacific beetle cockroach) |
-| Outgroup                  | *Ischnura elegans* (blue-tailed damselfly) <br>                                 
+| Outgroup                  | *Ischnura elegans* (blue-tailed damselfly) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_921293095.1/) <br>                                 
 
 
 
