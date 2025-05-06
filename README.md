@@ -378,9 +378,14 @@ ggplot(OR_family_counts_long, aes(x = GeneFamily, y = Species, size = GeneCount,
   geom_point() +
   scale_size_continuous(range = c(1, 10)) +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
-        axis.text.y = element_text(face = "italic", size = 12)) +
-  xlab("Gene family") + ylab("") +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
+    axis.text.y = element_text(face = "italic", size = 12),
+    legend.text = element_text(size = 12),
+    legend.title = element_text(size = 14)
+  ) +
+  xlab("Gene family") +
+  ylab("") +
   labs(size = "Gene count")
 ```
 <br><br>
