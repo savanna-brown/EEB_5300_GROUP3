@@ -28,14 +28,14 @@ To explore the relationship between odorant receptor (OR) gene repertoires and e
 - **Eusocial Blattodea (termites, formerly order Isoptera)**
 - **Non-eusocial Blattodea (cockroaches)**
 
-An outgroup species from Odonata was also included for comparative purposes. Species were chosen based on the availability of high-quality annotated proteomes.<br>
+An outgroup species from Odonata was also included for comparative purposes. Species were chosen based on the availability of high-quality annotated proteomes from NCBI.<br>
 
 | **Category**               | **Species**                                                                 |
 |---------------------------|------------------------------------------------------------------------------|
 | Eusocial Hymenoptera      | *Apis mellifera* (Western honeybee) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_003254395.2/)<br>*Harpegnathos saltator* (jumping ant) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_003227715.2/)<br>*Vespa crabro* (European hornet) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_910589235.1/)|
 | Non-eusocial Hymenoptera  | *Nasonia vitripennis* (jewel wasp) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_009193385.2/)<br>*Microplitis demolitor* (braconid parasitoid wasp) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_026212275.2/)<br>*Orussus abietinus* (parasitic wood wasp) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000612105.2/)|
-| Eusocial Blattodea        | *Zootermopsis nevadensis* (dampwood termite)<br>*Cryptotermes secundus* (drywood termite)<br>*Coptotermes formosanus* (Formosan subterranean termite) |
-| Non-eusocial Blattodea    | *Periplaneta americana* (American cockroach)<br>*Diploptera punctata* (Pacific beetle cockroach) |
+| Eusocial Blattodea        | *Zootermopsis nevadensis* (dampwood termite) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000696155.1/)<br>*Cryptotermes secundus* (drywood termite) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_002891405.2/)<br>*Coptotermes formosanus* (Formosan subterranean termite) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_013340265.1/)|
+| Non-eusocial Blattodea    | *Periplaneta americana* (American cockroach) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_040183065.1/)<br>*Diploptera punctata* (Pacific beetle cockroach) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_030220185.1/)|
 | Outgroup                  | *Ischnura elegans* (blue-tailed damselfly) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_921293095.1/) <br>                                 
 
 
