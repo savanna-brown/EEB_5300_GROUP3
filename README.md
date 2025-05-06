@@ -32,8 +32,8 @@ An outgroup species from Odonata was also included for comparative purposes. Spe
 
 | **Category**               | **Species**                                                                 |
 |---------------------------|------------------------------------------------------------------------------|
-| Eusocial Hymenoptera      | *Apis mellifera* (Western honeybee) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_003254395.2/) <br>*Harpegnathos saltator* (jumping ant) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_003227715.2/) <br>*Vespa crabro* (European hornet) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_910589235.1/)|
-| Non-eusocial Hymenoptera  | *Nasonia vitripennis* (jewel wasp)<br>*Microplitis demolitor* (braconid parasitoid wasp)<br>*Orussus abietinus* (parasitic wood wasp) |
+| Eusocial Hymenoptera      | *Apis mellifera* (Western honeybee) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_003254395.2/)<br>*Harpegnathos saltator* (jumping ant) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_003227715.2/)<br>*Vespa crabro* (European hornet) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_910589235.1/)|
+| Non-eusocial Hymenoptera  | *Nasonia vitripennis* (jewel wasp) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_009193385.2/)<br>*Microplitis demolitor* (braconid parasitoid wasp) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_026212275.2/)<br>*Orussus abietinus* (parasitic wood wasp) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000612105.2/)|
 | Eusocial Blattodea        | *Zootermopsis nevadensis* (dampwood termite)<br>*Cryptotermes secundus* (drywood termite)<br>*Coptotermes formosanus* (Formosan subterranean termite) |
 | Non-eusocial Blattodea    | *Periplaneta americana* (American cockroach)<br>*Diploptera punctata* (Pacific beetle cockroach) |
 | Outgroup                  | *Ischnura elegans* (blue-tailed damselfly) (https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_921293095.1/) <br>                                 
